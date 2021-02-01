@@ -1,0 +1,40 @@
+name: "Python Linting"
+description: "Uses Pylint, pycodestyle, Flake8, black"
+inputs:
+  python-root-list:
+    description: "A list of all paths to test"
+    required: false
+    default: "."
+  use-pylint:
+    description: "Use Pylint"
+    required: false
+    default: true
+  use-pycodestyle:
+    description: "Use pycodestyle"
+    required: false
+    default: true
+  use-flake8:
+    description: "Use Flake8"
+    required: false
+    default: true
+  use-black:
+    description: "Use Black"
+    required: false
+    default: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.python-root-list }}
+    - ${{ inputs.use-pylint }}
+    - ${{ inputs.use-pycodestyle }}
+    - ${{ inputs.use-flake8 }}
+    - ${{ inputs.use-black }}
+    - ${{ inputs.extra-pylint-options }}
+    - ${{ inputs.extra-pycodestyle-options }}
+    - ${{ inputs.extra-flake8-options }}
+    - ${{ inputs.extra-black-options }}
+branding:
+  icon: "terminal"
+  color: "white"    
