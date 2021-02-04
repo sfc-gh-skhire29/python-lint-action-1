@@ -7,16 +7,16 @@
 # $3 - use-pycodestyle
 # $4 - use-flake8
 # $5 - use-black
-# $8 - extra-pylint-options
-# $9 - extra-pycodestyle-options
-# ${10} - extra-flake8-options
-# ${11} - extra-black-options
+# $8 - extra-pylint-options 6
+# $9 - extra-pycodestyle-options 7
+# ${10} - extra-flake8-options 8
+# ${11} - extra-black-options 9
 
 if [ "$2" = true ] ; then
 
-    echo Running: pylint $8 $1
+    echo Running: pylint $6 $1
 
-    pylint $8 $1
+    pylint $6 $1
     exit_code=$?
 
     if [ "$exit_code" = "0" ]; then
@@ -31,9 +31,9 @@ fi
 
 if [ "$3" = true ] ; then
 
-    echo Running: pycodestyle $9 $1
+    echo Running: pycodestyle $7 $1
 
-    pycodestyle $9 $1
+    pycodestyle $7 $1
     exit_code=$?
 
     if [ "$exit_code" = "0" ]; then
@@ -47,9 +47,9 @@ fi
 
 if [ "$4" = true ] ; then
 
-    echo Running: flake8 ${10} $1
+    echo Running: flake8 $8 $1
 
-    flake8 ${10} $1
+    flake8 $8 $1
     exit_code=$?
 
     if [ "$exit_code" = "0" ]; then
@@ -63,9 +63,9 @@ fi
 
 if [ "$5" = true ] ; then
 
-    echo Running: black --check ${11} $1
+    echo Running: black --check $9 $1
 
-    black --check ${11} $1
+    black --check $9 $1
     exit_code=$?
 
     if [ "$exit_code" = "0" ]; then
